@@ -1,0 +1,20 @@
+{
+  "name": "girls-planet-999-restapi",
+  "version": "1.0.0",
+  "description": "![banner sobre a api do Girls Planet 999](./banner.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ananopaisdojavascript/girls-planet-999-restapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ananopaisdojavascript/girls-planet-999-restapi/issues"
+  },
+  "homepage": "https://github.com/ananopaisdojavascript/girls-planet-999-restapi#readme"
+}
