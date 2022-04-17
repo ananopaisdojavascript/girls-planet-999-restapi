@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "![banner sobre a api do Girls Planet 999](./banner.png)",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node dist/server.ts",
     "build": "tsc",
