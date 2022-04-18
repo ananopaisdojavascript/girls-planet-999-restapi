@@ -1,8 +1,6 @@
 import express, { Request, Response } from 'express';
 import mysql from 'mysql';
-const app = express();
 require('dotenv').config();
-const port = process.env.PORT || 3036;
 
 const connection = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -10,6 +8,9 @@ const connection = mysql.createConnection({
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_DB
 });
+
+const app = express();
+const port = process.env.PORT || 3000;
 
 app.get('/participants', (request: Request, response: Response) => {
     response.send("Hey!!!!!")
