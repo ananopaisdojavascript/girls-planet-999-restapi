@@ -11,6 +11,14 @@ const connection = mysql.createConnection({
     database: process.env.DATABASE_DB
 });
 
+const pool = mysql.createPool({
+    connectionLimit: 10,
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_DB
+});
+
 app.get('/participants', (request: Request, response: Response) => {
     const query = 'SELECT * FROM participants'
     connection.query(query, (error, rows) => {
@@ -35,5 +43,10 @@ app.get('/participants/:id', (request: Request, response: Response) => {
         return response.send(returnValue)
     })
 })
+
+pool.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+    if (error) throw error;
+    console.log('The solution is: ', results[0].solution);
+});
 
 app.listen(port, () => console.log(`Está funcionando na porta ${port}!! Uhu!!!`))
