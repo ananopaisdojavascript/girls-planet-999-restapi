@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import mysql from 'mysql';
 const app = express();
 require('dotenv').config();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3036;
 let connection;
 
 if(process.env.CLEARDB_DATABASE_URL) {
