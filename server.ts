@@ -3,19 +3,18 @@ import mysql from 'mysql';
 require('dotenv').config();
 const app = express();
 
-const connection = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_DB
-});
+let connection: mysql.Connection;
 
-const pool = mysql.createPool({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_DB
-});
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
+        host: process.env.DATABASE_HOST,
+        user: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASSWORD,
+        database: process.env.DATABASE_DB
+    });
+}
 
 app.get('/participants', (request: Request, response: Response) => {
     const query = 'SELECT * FROM participants'
@@ -41,11 +40,6 @@ app.get('/participants/:id', (request: Request, response: Response) => {
         return response.send(returnValue)
     })
 })
-
-pool.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results[0].solution);
-});
 
 
 const PORT = process.env.PORT || 3000;
