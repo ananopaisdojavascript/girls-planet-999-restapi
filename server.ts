@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 import mysql from 'mysql';
 require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 5000;
 
 const connection = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -12,7 +11,6 @@ const connection = mysql.createConnection({
 });
 
 const pool = mysql.createPool({
-    connectionLimit: 5,
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
@@ -49,4 +47,8 @@ pool.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
     console.log('The solution is: ', results[0].solution);
 });
 
-app.listen(port, () => console.log(`Está funcionando na porta ${port}!! Uhu!!!`))
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+});
